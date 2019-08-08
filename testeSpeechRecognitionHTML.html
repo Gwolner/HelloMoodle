@@ -12,6 +12,8 @@
 
 		<span id="unsupported" class="hidden">API not supported</span>
 		
+		<a href="#">Ola mundo</a>
+
 		<script>
 		
 		// Test browser support
@@ -25,7 +27,7 @@
 			alert("API NÃO suportada!");
 		}else {
 			//......
-			alert("API suportada!");
+			//alert("API suportada!");
 			
 			var recognizer = new window.SpeechRecognition();
 		
@@ -38,10 +40,77 @@
 				transcription.textContent = "";
 				for (var i = event.resultIndex; i < event.results.length; i++) {
 					if(event.results[i].isFinal){
-						var pegaRetorno = transcription.textContent = event.results[i][0].transcript+' (Taxa de acerto [0/1] : ' + event.results[i][0].confidence + ')';
-						alert(pegaRetorno);
+						
+						var pegaRetorno = event.results[i][0].transcript;
+						transcription.textContent = event.results[i][0].transcript+' (Taxa de acerto [0/1] : ' + event.results[i][0].confidence + ')';
+						
+						alert("("+pegaRetorno+")");
+
+						if(pegaRetorno == "Click" || pegaRetorno == " Click" || pegaRetorno == "click" || pegaRetorno == " click"){
+							//alert("entrei");
+
+
+							let allItems = document.querySelectorAll('a, button, input')
+
+let index = 0
+
+allItems.forEach((item) => {    
+	index++
+	let tempLabel = document.createElement('label')
+	tempLabel.setAttribute('style', 'background-color:yellow; padding:.66rem')
+	tempLabel.innerText = index   
+
+	item.appendChild(tempLabel)
+	item.setAttribute('style', 'border:2px solid aquamarine')
+	item.setAttribute('id', index)
+})
+
+let input = document.createElement('input')
+input.setAttribute('type', 'text')
+input.setAttribute('placeholder', 'insira o numero gerado aqui')
+
+let button = document.createElement('button')
+button.innerText = 'Clique aqui'
+button.addEventListener('click', (event) => {
+	let itemSelected = document.getElementById(input.value)
+	itemSelected.click()
+        index = 0
+})
+
+let div = document.createElement('div')
+div.setAttribute('style', 'display:block; text-align:center; padding:2rem; background-color:yellow')
+
+div.appendChild(input)
+div.appendChild(button)
+           
+document.querySelector('body').appendChild(div)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+						}
+						
 					}else{
-						transcription.textContent += event.results[i][0].transcript;
+						transcription.textContent += event.results[i][0].transcript;	
 					}
 				}
 			}
