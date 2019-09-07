@@ -1,5 +1,33 @@
+function contextHome(){	
+	recognizer.onresult = function(event){
+		//transcription.textContent = "";
+		for (var i = event.resultIndex; i < event.results.length; i++) {
+			if(event.results[i].isFinal){
+				
+				var pegaRetorno = (event.results[i][0].transcript.trim()).toUpperCase();
+				transcription.textContent = pegaRetorno+' (Taxa de acerto [0/1] : ' + event.results[i][0].confidence + ')';
+				
+				//alert("("+pegaRetorno+")");
+				if(pegaRetorno == "CLICK" || pegaRetorno == "LIKE"){// || pegaRetorno == " click" || pegaRetorno == " like"){
+					//alert("COMANDO CLICK!");	
+					//selectAllPure();
+					contextClick();
+				}
+				
+				if(pegaRetorno == "CASA"){// || pegaRetorno == " casa"){
+					//alert("COMANDO CASA!");
+				}
+				
+				
+			}else{
+				transcription.textContent += pegaRetorno;	
+			}
+		}
+	}
 
-function selectAll(){
+}
+
+function selectAll(){ //Seleciona todos os elementos interativos da tela e gera campo com botão de teste
 	let allItems = document.querySelectorAll('a, button, input')
 
 	let index = 0
@@ -15,28 +43,35 @@ function selectAll(){
 		item.setAttribute('id', index)
 	})
 
-	let input = document.createElement('input')
-	input.setAttribute('type', 'text')
-	input.setAttribute('placeholder', 'insira o numero gerado aqui')
+	//let input = document.createElement('input')
+	//input.setAttribute('type', 'text')
+	//input.setAttribute('placeholder', 'insira o numero gerado aqui')
 
-	let button = document.createElement('button')
-	button.innerText = 'Clique aqui'
-	button.addEventListener('click', (event) => {
-		let itemSelected = document.getElementById(input.value)
-		itemSelected.click()
-			index = 0
+	//let button = document.createElement('button')
+	//button.innerText = 'Clique aqui'
+	//button.addEventListener('click', (event) => {
+	//	let itemSelected = document.getElementById(input.value)
+	//	itemSelected.click()
+	//		index = 0
+	//})
+	document.getElementById("buffer").addEventListener("change", (event) => {
+		let itemSelected = document.getElementById(buffer.value)
+		itemSelected.click();
+		index = 0
 	})
 
-	let div = document.createElement('div')
-	div.setAttribute('style', 'display:block; text-align:center; padding:2rem; background-color:yellow')
 
-	div.appendChild(input)
-	div.appendChild(button)
+	//let div = document.createElement('div')
+	//div.setAttribute('style', 'display:block; text-align:center; padding:2rem; background-color:yellow')
+
+	//div.appendChild(input)
+	//div.appendChild(button)
 			   
-	document.querySelector('body').appendChild(div)
+	//document.querySelector('body').appendChild(div)
 };
 
-function selectAllPure(){
+
+function selectAllPure(){ //Seleciona todos os elementos interativos da tela
 	
 	let allItems = document.querySelectorAll('a, button, input')
 
@@ -56,28 +91,41 @@ function selectAllPure(){
 
 function contextClick(){
 	
-	var recognizerClick = new SpeechRecognition();
+	//var recognizerClick = new SpeechRecognition();
 		
-	var transcription2 = document.getElementById("transcription2");
+	var transcription2 = document.getElementById("buffer");
 
 	//Para o reconhecedor de voz, não parar de ouvir, mesmo que tenha pausas no usuario
-	recognizerClick.continuous = true;
-	recognizerClick.lang = "pt-BR";
-		
-	recognizerClick.onresult = function(event){
+	//recognizer.continuous = true;
+	//recognizer.lang = "pt-BR";
+	selectAllPure();
+	recognizer.onresult = function(event){
 		//transcription2.textContent = "";
 		var pegaRetorno;
 		for (var i = event.resultIndex; i < event.results.length; i++) {
 			if(event.results[i].isFinal){
 				
 				pegaRetorno = (event.results[i][0].transcript.trim()).toUpperCase();
-				transcription2.textContent = pegaRetorno;
+				transcription2.value = pegaRetorno;
 				
+				if(pegaRetorno == "VOLTAR"){// || pegaRetorno == " casa"){
+					alert("VOLTAR!");
+					contextHome();
+				}
+
+				//transcription2.addEventListener("change", (event) => {
+					let itemSelected = document.getElementById(pegaRetorno);
+					console.log(itemSelected);
+					itemSelected.click();
+					//index = 0
+				//})
+
+
 			}else{
-				transcription2.textContent += pegaRetorno;	
+				transcription2.value += pegaRetorno;	
 			}
 		}
 	}
 	
-	recognizerClick.start();
+	//recognizer.start();
 }
