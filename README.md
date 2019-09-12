@@ -1,4 +1,4 @@
-# Projeto AVA <img src="img/moodle.png" width="45" height="45">
+# Projeto AVA <img src="img/moodle.png" width="50" height="50" align="right">
 Projeto de pesquisa do Programa Institucional de Bolsas de Extensão (PIBEX 2019) do IFPE campus Recife. 
 
 Orientador: Profº Rafael Roque Aschoff 
