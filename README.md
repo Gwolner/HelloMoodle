@@ -1,7 +1,7 @@
-# Projeto AVA <img src="img/moodle.png" width="50" height="50" align="right">
+# Projeto AVA <img src="img/moodle.png" width="55" height="50" align="right">
 Projeto de pesquisa do Programa Institucional de Bolsas de Extensão (PIBEX 2019) do IFPE campus Recife. 
 
-Orientador: Profº Rafael Roque Aschoff 
+Orientador: Profº [Rafael Roque Aschoff](http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4139742E1)
 
 ## Sobre o projeto
 O projeto trata da criação de um Ambiente Virtual de Aprendizagem (AVA) com foco em acessibilidade para o campus através da plataforma de codigo aberto [Moodle](https://moodle.org/), utilizando plugins de acessibilidade ja existentes para a mesma plataforma  e o modulo de navegação por voz, desenvolvido neste mesmo projeto.
