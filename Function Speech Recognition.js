@@ -1,3 +1,7 @@
+function sair(){
+	window.close(); //Fechar janela
+}
+
 function voltar(){
 	window.history.back(); //Voltar no navegador
 }
@@ -22,16 +26,20 @@ function contextHome(){
 					contextClick();
 				}
 				
-				if(pegaRetorno == "VOLTAR"){// || pegaRetorno == " casa"){
-					alert("VOLTEI PRA PAGINA ANTERIOR!");
+				if(pegaRetorno == "RETORNAR"){// || pegaRetorno == " casa"){
+					//alert("VOLTEI PRA PAGINA ANTERIOR!");
 					voltar();
 				}
 
 				if(pegaRetorno == "AVANÇAR"){// || pegaRetorno == " casa"){
-					alert("SEGUI PRA PAGINA SEGUINTE!");
+					//alert("SEGUI PRA PAGINA SEGUINTE!");
 					avancar();
 				}
 				
+				if(pegaRetorno == "SAIR"){// || pegaRetorno == " casa"){
+					//alert("A JANELA SERÁ FECHADA!");
+					sair();
+				}
 				
 			}else{
 				transcription.textContent += pegaRetorno;	
