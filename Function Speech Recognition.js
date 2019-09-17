@@ -1,64 +1,62 @@
-function sair(){
+function sair() {
 	window.close(); //Fechar janela
 }
 
-function voltar(){
+function voltar() {
 	window.history.back(); //Voltar no navegador
 }
 
-function avancar(){
+function avancar() {
 	window.history.forward(); //Avançar no navegador
 }
 
-function contextHome(){	
-	recognizer.onresult = function(event){
+function contextHome() {
+	recognizer.onresult = function (event) {
 		//transcription.textContent = "";
 		for (var i = event.resultIndex; i < event.results.length; i++) {
-			if(event.results[i].isFinal){
-				
+			if (event.results[i].isFinal) {
+
 				var pegaRetorno = (event.results[i][0].transcript.trim()).toUpperCase();
-				transcription.textContent = pegaRetorno+' (Taxa de acerto [0/1] : ' + event.results[i][0].confidence + ')';
-				
-				//alert("("+pegaRetorno+")");
-				if(pegaRetorno == "CLICK" || pegaRetorno == "LIKE"){// || pegaRetorno == " click" || pegaRetorno == " like"){
+				transcription.textContent = pegaRetorno + ' (Taxa de acerto [0/1] : ' + event.results[i][0].confidence + ')';
+
+				if (pegaRetorno == "CLICK" || pegaRetorno == "LIKE") {// || pegaRetorno == " click" || pegaRetorno == " like"){
 					//alert("COMANDO CLICK!");	
-					//selectAllPure();
 					contextClick();
 				}
-				
-				if(pegaRetorno == "RETORNAR"){// || pegaRetorno == " casa"){
+
+				if (pegaRetorno == "RETORNAR") {// || pegaRetorno == " casa"){
 					//alert("VOLTEI PRA PAGINA ANTERIOR!");
 					voltar();
 				}
 
-				if(pegaRetorno == "AVANÇAR"){// || pegaRetorno == " casa"){
+				if (pegaRetorno == "AVANÇAR") {// || pegaRetorno == " casa"){
 					//alert("SEGUI PRA PAGINA SEGUINTE!");
 					avancar();
 				}
-				
-				if(pegaRetorno == "SAIR"){// || pegaRetorno == " casa"){
+
+				if (pegaRetorno == "SAIR") {// || pegaRetorno == " casa"){
 					//alert("A JANELA SERÁ FECHADA!");
 					sair();
 				}
-				
-			}else{
-				transcription.textContent += pegaRetorno;	
+
+			} else {
+				transcription.textContent += pegaRetorno;
 			}
 		}
 	}
 
 }
 
-function selectAll(){ //Seleciona todos os elementos interativos da tela e gera campo com botão de teste
+function selectAll() { //Seleciona todos os elementos interativos da tela e gera campo com botão de teste
 	let allItems = document.querySelectorAll('a, button, input')
 
 	let index = 0
 
-	allItems.forEach((item) => {    
+	allItems.forEach((item) => {
 		index++
 		let tempLabel = document.createElement('label')
 		tempLabel.setAttribute('style', 'background-color:aquamarine; padding:.66rem')
-		tempLabel.innerText = index   
+		tempLabel.innerText = index
 
 		item.appendChild(tempLabel)
 		item.setAttribute('style', 'border:2px solid aquamarine')
@@ -88,22 +86,22 @@ function selectAll(){ //Seleciona todos os elementos interativos da tela e gera 
 
 	//div.appendChild(input)
 	//div.appendChild(button)
-			   
+
 	//document.querySelector('body').appendChild(div)
 };
 
 
-function selectAllPure(){ //Seleciona todos os elementos interativos da tela
-	
+function selectAllPure() { //Seleciona todos os elementos interativos da tela
+
 	let allItems = document.querySelectorAll('a, button, input')
 
 	let index = 0
 
-	allItems.forEach((item) => {    
+	allItems.forEach((item) => {
 		index++
 		let tempLabel = document.createElement('label')
 		tempLabel.setAttribute('style', 'background-color:aquamarine; padding:.66rem')
-		tempLabel.innerText = index   
+		tempLabel.innerText = index
 
 		item.appendChild(tempLabel)
 		item.setAttribute('style', 'border:2px solid aquamarine')
@@ -111,43 +109,49 @@ function selectAllPure(){ //Seleciona todos os elementos interativos da tela
 	})
 };
 
-function contextClick(){
-	
+function contextClick() {
+
 	//var recognizerClick = new SpeechRecognition();
-		
+
 	var transcription2 = document.getElementById("buffer");
 
 	//Para o reconhecedor de voz, não parar de ouvir, mesmo que tenha pausas no usuario
 	//recognizer.continuous = true;
 	//recognizer.lang = "pt-BR";
 	selectAllPure();
-	recognizer.onresult = function(event){
+	recognizer.onresult = function (event) {
 		//transcription2.textContent = "";
 		var pegaRetorno;
 		for (var i = event.resultIndex; i < event.results.length; i++) {
-			if(event.results[i].isFinal){
-				
+			if (event.results[i].isFinal) {
+
 				pegaRetorno = (event.results[i][0].transcript.trim()).toUpperCase();
-				transcription2.value = pegaRetorno;
-				
-				if(pegaRetorno == "VOLTAR"){// || pegaRetorno == " casa"){
+				//transcription2.value = pegaRetorno;
+				localStorage.setItem("pegaRetorno", pegaRetorno) //Armazena o que é dito no Local Storage
+
+				/*
+				Comandos de voz devem ser inseridos antes da ação de click() pois irá gerar
+				erro ao se efetuar click em objeto null (Ex: objeto de id "voltar" seria executado)
+				*/
+				if (pegaRetorno == "VOLTAR") {// || pegaRetorno == " casa"){
 					alert("VOLTAR!");
 					contextHome();
 				}
 
-				//transcription2.addEventListener("change", (event) => {
-					let itemSelected = document.getElementById(pegaRetorno);
-					console.log(itemSelected);
-					itemSelected.click();
-					//index = 0
+				//Recupera o que está no Local Storage, usa como id do elemento que se deseja clicar
+				let itemSelected = document.getElementById(localStorage.getItem("pegaRetorno"));
+				console.log(itemSelected);
+				itemSelected.click(); //Ação de click sobre o elemento selecionado
+				//index = 0
 				//})
 
+				
 
-			}else{
-				transcription2.value += pegaRetorno;	
+			} else {
+				transcription2.value += pegaRetorno;
 			}
 		}
 	}
-	
+
 	//recognizer.start();
-}
+};
