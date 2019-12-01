@@ -1,0 +1,48 @@
+{
+   "author": "Javier Perez",
+   "background": {
+      "scripts": [ "background.js" ]
+   },
+   "browser_action": {
+      "default_icons/icon": {
+         "128": "icons/icon128x128.png",
+         "16": "icons/icon16x16.png",
+         "20": "icons/icon20x20.png",
+         "24": "icons/icon24x24.png",
+         "256": "icons/icon256x256.png",
+         "32": "icons/icon32x32.png",
+         "512": "icons/icon512x512.png",
+         "64": "icons/icon64x64.png"
+      }
+   },
+   "content_scripts": [ {
+      "css": [ "body.css" ],
+      "js": [ "content.js" ],
+      "match_about_blank": true,
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   } ],
+   "content_security_policy": "script-src 'self' https://ssl.google-analytics.com https://cdn.ravenjs.com https://sentry.io 'unsafe-eval'; object-src 'self'",
+   "default_locale": "en",
+   "description": "__MSG_description__",
+   "homepage_url": "http://www.handsfreeforweb.com",
+   "icons": {
+      "128": "icons/icon128x128.png",
+      "16": "icons/icon16x16.png",
+      "20": "icons/icon20x20.png",
+      "24": "icons/icon24x24.png",
+      "256": "icons/icon256x256.png",
+      "32": "icons/icon32x32.png",
+      "512": "icons/icon512x512.png",
+      "64": "icons/icon64x64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlEMZkno2xcP6dQMmj464Z1zRZVOVQU1CfHt94xBn0NEqkSVv/hzpydNUKJ4erTpS5xiM7ii1ABiznFc5yRyExt+2UpBB43L3S7lqisQ+zDZRqvpgq6aIUGVBsqFHgRbu0cLOMDaRGNcNMwan0ZQVEONiRWkfE163F/zFwI2FiS90C/YsLwH5Tovs+XiFbv5w1zo2Az+UZdik9TmopJdl+fHUiPe+y3JwuLf748Kav/UDqykVtA3WQ7XrYpJdxFMDMw4rjz5eNO7IC7z+uG/1sws9rUJsXlwAGc6RU9JXvsMY1Br8TGQyho+FncpLb1pNoygjKtQJ6b4QA/1PXy8k5QIDAQAB",
+   "manifest_version": 2,
+   "name": "__MSG_name__",
+   "options_page": "docs.html",
+   "permissions": [ "\u003Call_urls>", "bookmarks", "clipboardRead", "clipboardWrite", "downloads", "history", "tabs", "topSites", "unlimitedStorage" ],
+   "short_name": "__MSG_shortName__",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "3.0.5",
+   "web_accessible_resources": [ "app.css", "speech-recognizer.html", "native-commands-handler.js", "font-awesome/fontawesome-webfont.eot", "font-awesome/fontawesome-webfont.woff2", "font-awesome/fontawesome-webfont.woff", "font-awesome/fontawesome-webfont.ttf", "font-awesome/fontawesome-webfont.svg" ]
+}
