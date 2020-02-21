@@ -1,0 +1,66 @@
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>AVA Speech testes</title>
+	<script src="Function Speech Recognition.js"></script>
+</head>
+
+<body>
+	<p id="ola">PIBEX - Projeto AVA</p>
+	<p id="ola">Você disse:</p>
+	<div id="transcription">Contexto inicial</div>
+	<div id="transcription2">Contexto secundário</div>
+	<input id="buffer" type="text"><br>
+
+	<button id="rect">Gravar</button>
+
+	<span id="unsupported" class="hidden">API not supported</span>
+
+	<h1><a href="https://pt.wikipedia.org/wiki/Programa_Ol%C3%A1_Mundo">Ola mundo</a></h1>
+	<h1><a href="https://portal.ifpe.edu.br/campus/recife">IFPE</a></h1>
+	<h1><a href="https://www.google.com.br/">Google</a></h1>
+	<h1><a href="https://moodle.org/?lang=pt_br">Moodle</a></h1>
+	<h1><a href="https://www.pokemon.com/br/">Pokemon</a></h1>
+	<h1><a href="https://pt.wikipedia.org/wiki/JavaScript">Javascript</a></h1>
+	<h1><a href="https://www.php.net/">PHP</a></h1>
+
+	<script>
+		var recognizer;
+		
+		// Test browser support
+		const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || null;
+
+		//caso não suporte esta API DE VOZ            
+		if (SpeechRecognition === null) {
+			//document.getElementById('unsupported').classList.remove('hidden');
+			alert("API NÃO suportada!");
+		} else {
+			//alert("API suportada!");
+			var transcription = document.getElementById("transcription"); //Obtenção de elemento p/ teste
+
+			recognizer = new SpeechRecognition(); //Gerando objeto de reconhecimento de voz
+			recognizer.continuous = true; //Reconhecedor de voz não para de ouvir mesmo que tenha pausas no usuário
+			recognizer.lang = navigator.language || navigator.userLanguage || "pt-BR"; //Definição de idioma
+
+			contextHome();
+
+			recognizer.start();
+			<!--document.querySelector("#rect").addEventListener("click", function () {
+			-->
+				<!-- try {
+				-->
+					<!--recognizer.start(); -->
+				  <!-- } catch (ex) {
+				-->
+					<!--alert("error: " + ex.message); -->
+				  <!-- } -->
+			<!-- }); -->
+		}
+
+
+
+	</script>
+</body>
+
+</html>
