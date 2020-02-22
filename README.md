@@ -38,10 +38,15 @@ No Google Chrome, é possível experiemntar uma demonstração de sua aplicabili
 
 O plugin primeiro identifica se o navegador que o esta tentanro rodar é alguma versão do Google Chrome ou não. Caso não seja, ele simplesmente não funcionará. Em caso positivo, irá solicitar uma única vez a permissão do usuário para ter acesso ao microfone. 
 
-Dada a permissão, um ícone vermelho, indicando que o microfone esta ativado e escutando qualquer comando, será exibido na aba do Moodle. Ao fornecer um comando (Veja o [manual do usuário]() para conhecer os comandos!), o áudio é capturado via microfone, convertido em pacotes, enviado pelo plugin para uma base do Google (por isto funciona apenas no Chrome!) e devolvida na forma de String para o plugin.
+Dada a permissão, um ícone vermelho, indicando que o microfone esta ativado e escutando qualquer comando, será exibido na aba do Moodle. Ao fornecer um comando (Veja o [manual do usuário](https://github.com/Gwolner/pibex-hello-moodle/tree/master/documenta%C3%A7%C3%A3o%20para%20usu%C3%A1rios) para conhecer os comandos!), o áudio é capturado via microfone, convertido em pacotes, enviado pelo plugin para uma base do Google (por isto funciona apenas no Chrome!) e devolvida na forma de String para o plugin.
 
 Com base na String devolvida, o plugin analisa se é algum comando válido. Em caso positivo, a ação é executada (clique em algum elemento do front-end, voltar pra página anterior, descer ou subir a barra de rolagem, etc) e em caso negativo, nada acontece e o microfone permanece novamente na escuta.
 
 Alguns fatores como internet lenta/ociosa, timbre de voz, volume e menção incorreta de comandos podem afetar a ação esperada por parte do plugin. Fatores externos, como o servidor de análsie de áudio do Google, por exemplo, podem afetar a formação da String esperada, ainda que se tenha mencioando corretamente.
 
 ## Informações adicionais
+* [Documentação do usuário](https://github.com/Gwolner/pibex-hello-moodle/tree/master/documenta%C3%A7%C3%A3o%20para%20usu%C3%A1rios)
+* [Inforrmações técnicas](https://github.com/Gwolner/pibex-hello-moodle/tree/master/inforrma%C3%A7%C3%B5es%20t%C3%A9cnicas)
+* [Relatório resumido](https://github.com/Gwolner/pibex-hello-moodle/tree/master/relat%C3%B3rio%20resumido)
+* [Experimentos realizados](https://github.com/Gwolner/pibex-hello-moodle/tree/master/experimentos)
+* [Eventos](https://github.com/Gwolner/pibex-hello-moodle/tree/master/eventos)
