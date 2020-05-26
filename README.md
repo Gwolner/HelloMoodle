@@ -1,7 +1,7 @@
 # Hello Moodle    <img src="logo/moodle.png" width="65" height="50" align="right">
 
-Projeto de pesquisa do Programa Institucional de Bolsas de Extensão (PIBEX 2019) do IFPE campus Recife.</br>
-Orientador: Profº [Rafael Roque Aschoff](http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4139742E1)
+> Projeto de pesquisa do Programa Institucional de Bolsas de Extensão (PIBEX 2019) do IFPE campus Recife.</br>
+> Orientador: Profº [Rafael Roque Aschoff](http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4139742E1)
 
 ## Sobre o projeto
 
